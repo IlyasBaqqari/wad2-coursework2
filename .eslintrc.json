@@ -1,0 +1,15 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }]
+  }
+}
