@@ -1,0 +1,20 @@
+{
+  "name": "wad2-coursework2",
+  "version": "1.0.0",
+  "description": "Web Application Development 2: Coursework 2",
+  "homepage": "https://github.com/IlyasBaqqari/wad2-coursework2#readme",
+  "bugs": {
+    "url": "https://github.com/IlyasBaqqari/wad2-coursework2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IlyasBaqqari/wad2-coursework2.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
