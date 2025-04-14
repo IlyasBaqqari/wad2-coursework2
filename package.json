@@ -15,7 +15,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "rm -f ./data/*.db && node seed/seed.js",
+    "build:css": "tailwindcss -i ./public/styles.css -o ./public/tailwind.css",
+    "start": "npm run build:css && node index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -27,8 +29,12 @@
   },
   "keywords": [],
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "eslint": "^9.24.0",
     "eslint-plugin-prettier": "^5.2.6",
-    "prettier": "^3.5.3"
+    "postcss": "^8.5.3",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^3.4.1"
   }
 }

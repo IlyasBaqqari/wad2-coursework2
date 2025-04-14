@@ -1,0 +1,38 @@
+export const mockClasses = [
+  {
+    title: 'Yoga Fundamentals',
+    description: 'Introduction to basic yoga poses and breathing techniques',
+    date: '2025-04-20',
+    time: '09:00',
+    duration: '60',
+    location: 'Studio A',
+    price: '15.00',
+  },
+  {
+    title: 'Advanced Pilates',
+    description: 'Intensive core strengthening and flexibility workout',
+    date: '2025-04-21',
+    time: '17:30',
+    duration: '45',
+    location: 'Studio B',
+    price: '20.00',
+  },
+  {
+    title: 'Morning Meditation',
+    description: 'Guided meditation and mindfulness practice',
+    date: '2025-04-22',
+    time: '07:30',
+    duration: '30',
+    location: 'Zen Room',
+    price: '10.00',
+  },
+  {
+    title: 'HIIT Training',
+    description: 'High-intensity interval training for maximum calorie burn',
+    date: '2025-04-23',
+    time: '18:00',
+    duration: '45',
+    location: 'Gym Floor',
+    price: '25.00',
+  },
+];

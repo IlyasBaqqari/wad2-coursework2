@@ -1,0 +1,18 @@
+<html lang="en-gb">
+{{>components/header}}
+<body class="bg-stone-50">
+  <header class="flex justify-between items-center bg-purple-700 p-5 mb-5">
+    <h1 class="text-5xl text-white font-medium">Dance Booker</h1>
+    <a href="#" class="bg-purple-100 hover:bg-purple-300 text-purple-900 font-bold py-2 px-4 rounded">Login</a>
+  </header>
+  <div>
+    <h2 class="text-3xl font-medium p-3 ps-5">Classes</h2>
+    {{>components/classList}}
+  </div>
+
+  <div>
+    <h2 class="text-3xl font-medium p-3 ps-5 mt-5">Courses</h2>
+    {{>components/courseList}}
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div class="overflow-x-auto mx-4">
+  <div class="flex space-x-4 py-2">
+    {{#courses}}
+      <div class="flex-shrink-0 flex flex-col justify-center items-center bg-stone-200 rounded-2xl w-64 h-32 p-4 my-4 hover:bg-purple-200 transition-all hover:shadow hover:cursor-pointer">
+        <h3 class="text-xl text-center mb-3">{{title}}</h3>
+        <p class="text-md text-center ">{{startDate}}</p>
+      </div>
+    {{/courses}}
+  </div>
+</div>
+{{^courses}}
+  <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center h-24 bg-stone-100 rounded-2xl w-4/5 m-5">
+      <p class="text-center text-stone-400 p-0 m-0">No courses available</p>
+    </div>
+  </div>
+{{/courses}}

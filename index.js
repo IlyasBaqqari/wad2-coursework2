@@ -1,6 +1,7 @@
 import express from 'express';
 import mustacheExpress from 'mustache-express';
 import bodyParser from 'body-parser';
+import routes from './routes/routes.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -15,9 +16,11 @@ app.set('view engine', 'mustache');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use('/', routes);
+
 const public_path = join(__dirname, 'public');
 app.use(express.static(public_path));
 
-app.listen(9000, () => {
-  console.log('Server started on port 9000.\nCtrl^C to quit.');
+app.listen(3000, () => {
+  console.log('Server started on port 3000.\nCtrl^C to quit.');
 });
