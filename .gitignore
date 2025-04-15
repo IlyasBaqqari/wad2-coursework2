@@ -13,3 +13,6 @@ data/*.db
 
 # Generated Styles
 public/tailwind.css
+
+# Envoronment Variables
+.env

@@ -34,6 +34,7 @@ export const classDetails = async (req, res) => {
     }
 
     res.render('classDetails', {
+      title: `${classData.title} - Dance Booker`,
       class: classData,
       enrolForm: {
         title: 'Enter your name to book a space in this class',
@@ -57,6 +58,7 @@ export const courseDetails = async (req, res) => {
     }
 
     res.render('courseDetails', {
+      title: `${course.title} - Dance Booker`,
       course,
       classes,
       enrolForm: {
@@ -80,7 +82,8 @@ export const handleEnrolment = async (req, res) => {
 
   const type = courseId ? 'course' : 'class';
 
-  const title = type === 'course' ? 'Enrolment Confirmed' : 'Booking Confirmed';
+  const header =
+    type === 'course' ? 'Enrolment Confirmed' : 'Booking Confirmed';
   const message =
     type === 'course'
       ? 'You have successfully been enrolled on the course.'
@@ -94,7 +97,11 @@ export const handleEnrolment = async (req, res) => {
       ...(courseId && { courseId }),
     });
 
-    res.render('enrolmentConfirmation', { title, message });
+    res.render('enrolmentConfirmation', {
+      title: `${header} - Dance Booker`,
+      header,
+      message,
+    });
   } catch (err) {
     console.error('ERROR - controller > newEnrolment: ', err);
     res.status(500).send('[500] Error completing enrolment');

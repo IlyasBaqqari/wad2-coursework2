@@ -99,3 +99,14 @@ export const mockEnrolments = [
     courseId: 'pV0b4WD5K5iatyt5',
   },
 ];
+
+export const mockOrganisers = [
+  {
+    username: 'admin',
+    password: 'admin',
+  },
+  {
+    username: 'organiser2',
+    password: 'password123',
+  },
+];
