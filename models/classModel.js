@@ -34,6 +34,20 @@ class ClassModel {
     });
   }
 
+  getAllByCourseId(courseId) {
+    return new Promise((resolve, reject) => {
+      this.db.find({ courseId }, (err, doc) => {
+        if (err) {
+          reject(err);
+          console.error('ERROR - classModel > getAllByCourseId(): ', err);
+        } else {
+          resolve(doc);
+          console.log('classModel > getAllByCourseId(): ', doc);
+        }
+      });
+    });
+  }
+
   insert(newClass) {
     return new Promise((resolve, reject) => {
       this.db.insert(newClass, (err, doc) => {

@@ -1,12 +1,6 @@
 export const mockCourses = [
   {
-    title: 'Beginner Salsa Course',
-    description: 'Learn the foundations of Salsa dancing in this course.',
-    startDate: '2025-05-01',
-    endDate: '2025-06-26',
-    price: '100.00',
-  },
-  {
+    _id: 'ALB9Tcd3T03pDHLt',
     title: 'Power Yoga Series',
     description:
       'A progressive series focused on strength and stamina through Power Yoga.',
@@ -15,6 +9,7 @@ export const mockCourses = [
     price: '90.00',
   },
   {
+    _id: 'pV0b4WD5K5iatyt5',
     title: 'Mindfulness & Meditation Program',
     description: 'Sessions to cultivate mindfulness and inner calm.',
     startDate: '2025-04-29',
@@ -22,6 +17,7 @@ export const mockCourses = [
     price: '60.00',
   },
   {
+    _id: 'NAo9j2aVv44OV9bT',
     title: 'Pilates for Posture',
     description:
       'A course designed to improve your posture and strengthen core muscles.',

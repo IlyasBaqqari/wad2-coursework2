@@ -1,7 +1,7 @@
 import express from 'express';
 import mustacheExpress from 'mustache-express';
 import bodyParser from 'body-parser';
-import routes from './routes/routes.js';
+import router from './routes/router.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -16,7 +16,7 @@ app.set('view engine', 'mustache');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', routes);
+app.use('/', router);
 
 const public_path = join(__dirname, 'public');
 app.use(express.static(public_path));

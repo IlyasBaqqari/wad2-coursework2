@@ -7,3 +7,9 @@
 
 # Node Modules
 node_modules/
+
+# Data Stores
+data/*.db
+
+# Styles
+public/tailwind.css

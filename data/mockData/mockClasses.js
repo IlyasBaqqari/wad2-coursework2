@@ -1,5 +1,6 @@
 export const mockClasses = [
   {
+    _id: 'OfAjGfAbPErN4C50',
     title: 'Yoga Fundamentals',
     description: 'Introduction to basic yoga poses and breathing techniques',
     date: '2025-04-20',
@@ -7,8 +8,10 @@ export const mockClasses = [
     duration: '60',
     location: 'Studio A',
     price: '15.00',
+    courseId: 'ALB9Tcd3T03pDHLt',
   },
   {
+    _id: 'mSdu0GLcc4SVpWQ5',
     title: 'Advanced Pilates',
     description: 'Intensive core strengthening and flexibility workout',
     date: '2025-04-21',
@@ -16,8 +19,10 @@ export const mockClasses = [
     duration: '45',
     location: 'Studio B',
     price: '20.00',
+    courseId: 'NAo9j2aVv44OV9bT',
   },
   {
+    _id: '0plSDw6vAd9UZeeH',
     title: 'Morning Meditation',
     description: 'Guided meditation and mindfulness practice',
     date: '2025-04-22',
@@ -25,8 +30,10 @@ export const mockClasses = [
     duration: '30',
     location: 'Zen Room',
     price: '10.00',
+    courseId: 'pV0b4WD5K5iatyt5',
   },
   {
+    _id: 'Ey5hzORZTDwr5mEA',
     title: 'HIIT Training',
     description: 'High-intensity interval training for maximum calorie burn',
     date: '2025-04-23',
