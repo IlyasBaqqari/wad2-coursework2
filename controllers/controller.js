@@ -1,8 +1,10 @@
 import CourseModel from '../models/courseModel.js';
 import ClassModel from '../models/classModel.js';
+import EnrolmentModel from '../models/enrolmentModel.js';
 
 const courseModel = new CourseModel();
 const classModel = new ClassModel();
+const enrolmentModel = new EnrolmentModel();
 
 export const homePage = async (req, res) => {
   try {
@@ -31,7 +33,14 @@ export const classDetails = async (req, res) => {
       return res.status(404).send('[404] Class not found');
     }
 
-    res.render('classDetails', { class: classData });
+    res.render('classDetails', {
+      class: classData,
+      enrolForm: {
+        title: 'Enter your name to book a space in this class',
+        buttonText: 'Book this Class',
+        classId: classData._id,
+      },
+    });
   } catch (err) {
     console.error('ERROR - controller > classDetails: ', err);
     res.status(500).send('[500] Error loading class');
@@ -47,9 +56,47 @@ export const courseDetails = async (req, res) => {
       return res.status(404).send('[404] Course not found');
     }
 
-    res.render('courseDetails', { course, classes });
+    res.render('courseDetails', {
+      course,
+      classes,
+      enrolForm: {
+        title: 'Enter your name to enrol in this course',
+        buttonText: 'Enrol in Course',
+        courseId: course._id,
+      },
+    });
   } catch (err) {
     console.error('ERROR - controller > courseDetails: ', err);
     res.status(500).send('[500] Error loading course');
+  }
+};
+
+export const handleEnrolment = async (req, res) => {
+  const { name, classId, courseId } = req.body;
+
+  if (!name || (!classId && !courseId)) {
+    return res.status(400).send(`[400] Missing enrolment data:\n\n${req.body}`);
+  }
+
+  const type = courseId ? 'course' : 'class';
+
+  const title = type === 'course' ? 'Enrolment Confirmed' : 'Booking Confirmed';
+  const message =
+    type === 'course'
+      ? 'You have successfully been enrolled on the course.'
+      : 'You have successfully made a booking for the class.';
+
+  try {
+    await enrolmentModel.insert({
+      name,
+      type,
+      ...(classId && { classId }),
+      ...(courseId && { courseId }),
+    });
+
+    res.render('enrolmentConfirmation', { title, message });
+  } catch (err) {
+    console.error('ERROR - controller > newEnrolment: ', err);
+    res.status(500).send('[500] Error completing enrolment');
   }
 };

@@ -11,5 +11,5 @@ node_modules/
 # Data Stores
 data/*.db
 
-# Styles
+# Generated Styles
 public/tailwind.css

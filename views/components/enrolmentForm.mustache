@@ -1,0 +1,18 @@
+<form action="/enrolment" method="POST" class="space-y-4 p-6 pt-3 mt-4 bg-purple-50 rounded-2xl">
+  {{#enrolForm.classId}}
+    <input type="hidden" name="classId" value="{{class._id}}">
+  {{/enrolForm.classId}}
+
+  {{#enrolForm.courseId}}
+    <input type="hidden" name="courseId" value="{{course._id}}">
+  {{/enrolForm.courseId}}
+
+  <div class="flex flex-col items-center justify-between h-40 m-0">
+    <p class="text-center text-lg">{{enrolForm.title}}</p>
+    <label class="hidden" for="name">Name</label>
+    <input id="name" type="text" name="name" placeholder="Your name..." required class="border p-2 px-3 w-full rounded">
+    <button type="submit" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">
+      {{enrolForm.buttonText}}
+    </button>
+  </div>
+</form>
