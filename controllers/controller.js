@@ -1,10 +1,8 @@
-import CourseModel from '../models/courseModel.js';
-import ClassModel from '../models/classModel.js';
-import EnrolmentModel from '../models/enrolmentModel.js';
-
-const courseModel = new CourseModel();
-const classModel = new ClassModel();
-const enrolmentModel = new EnrolmentModel();
+import {
+  classModel,
+  courseModel,
+  enrolmentModel,
+} from '../models/instances/instances.js';
 
 export const homePage = async (req, res) => {
   try {

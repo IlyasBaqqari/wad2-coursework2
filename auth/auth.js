@@ -1,8 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import OrganiserModel from '../models/organiserModel.js';
-
-const organiserModel = new OrganiserModel();
+import { organiserModel } from '../models/instances/instances.js';
 
 export const login = async (req, res, next) => {
   try {

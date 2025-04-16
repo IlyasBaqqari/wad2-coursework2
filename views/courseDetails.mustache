@@ -3,7 +3,12 @@
 <body class="bg-stone-50">
   {{>components/titleBar}}
   <div class="container mx-auto px-4 py-8">
-    {{>components/homeButton}}
+    {{>components/backButton}}
+    {{#user}}
+      <div class="my-8">
+        <a href="#" class="bg-blue-100 hover:bg-blue-300 text-blue-800 font-bold py-2 px-4 rounded">Manage Course</a>
+      </div>
+    {{/user}}
     <h1 class="text-3xl font-bold">{{course.title}}</h1>
     <p class="text-stone-700 mt-2">{{course.description}}</p>
     <p class="mt-4"><strong>Start:</strong> {{course.startDate}}</p>
@@ -13,9 +18,7 @@
     <h2 class="text-2xl mt-6 font-semibold">Included Classes <b class="text-stone-500 font-semibold">({{classes.length}})</b></h2>
     {{#classes.length}}
       <div class="mt-2 space-y-2 m-4" style="margin: -4px -16px 4px;">
-        {{#classes}}
-          {{>components/classList}}
-        {{/classes}}
+        {{>components/classList}}
       </div>
     {{/classes.length}}
     {{^classes.length}}

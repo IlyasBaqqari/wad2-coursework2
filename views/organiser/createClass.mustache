@@ -1,0 +1,46 @@
+<html lang="en-gb">
+{{>components/header}}
+<body class="bg-stone-50">
+{{>components/titleBar}}
+<div class="container mx-auto px-4 py-8">
+  {{>components/backButton}}
+  <h1 class="text-3xl font-bold mb-5">Create Course</h1>
+  <form method="POST" action="/organiser/class/new" class="space-y-4 p-6 bg-purple-100 rounded-2xl">
+    <div>
+      <label for="title" class="block mb-1.5 font-medium">Title</label>
+      <input id="title" type="text" name="title" required placeholder="Title..." class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="description" class="block mb-1.5 font-medium">Description</label>
+      <textarea id="description" name="description" required placeholder="Description..." rows="4" class="border p-2 px-3 w-full rounded resize-none "></textarea>
+    </div>
+    <div>
+      <label for="date" class="block mb-1.5 font-medium">Date</label>
+      <input id="date" type="date" name="date" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="time" class="block mb-1.5 font-medium">Time</label>
+      <input id="time" type="time" name="time" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="price" class="block mb-1.5 font-medium">Price (£)</label>
+      <input id="price" type="number" name="price" step="0.01" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="courseId" class="block mb-1.5 font-medium"><b class="text-purple-800 font-medium">(optional)</b> Link to Course</label>
+      <select id="courseId" name="courseId" class="border p-2 px-3 w-full rounded">
+        <option value="">Standalone Class (No Course)</option>
+        {{#courses}}
+          <option value="{{_id}}">{{title}}</option>
+        {{/courses}}
+      </select>
+    </div>
+    <div class="pt-2">
+      <button type="submit" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">
+        Create Course
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

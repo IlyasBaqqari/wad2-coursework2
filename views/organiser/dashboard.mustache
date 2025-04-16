@@ -3,9 +3,32 @@
 <body class="bg-stone-50">
   {{>components/titleBar}}
   <div class="container mx-auto px-4 py-8">
-    {{>components/homeButton}}
+    {{>components/backButton}}
     <h1 class="text-2xl font-bold mb-8">Organiser Dashboard</h1>
-    <a href="/organiser/logout" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">Sign out</a>
+
+    <div>
+      <h2 class="text-xl font-medium py-3">Classes</h2>
+      <div class="my-2">
+        <a href="/organiser/class/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Class</a>
+      </div>
+      <div style="margin: -6px -16px 4px">
+        {{>components/classList}}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-medium py-3 mt-5">Courses</h2>
+      <div class="my-2">
+        <a href="/organiser/course/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Course</a>
+      </div>
+      <div style="margin: -6px -16px 4px">
+        {{>components/courseList}}
+      </div>
+    </div>
+
+    <div class="my-8">
+      <a href="/organiser/logout" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">Sign out</a>
+    </div>
   </div>
 </body>
 </html>

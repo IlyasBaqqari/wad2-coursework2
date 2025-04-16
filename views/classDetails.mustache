@@ -3,10 +3,15 @@
 <body class="bg-stone-50">
   {{>components/titleBar}}
   <div class="container mx-auto px-4 py-8">
-    {{>components/homeButton}}
+    {{>components/backButton}}
+    {{#user}}
+      <div class="my-8">
+        <a href="#" class="bg-blue-100 hover:bg-blue-300 text-blue-800 font-bold py-2 px-4 rounded">Manage Class</a>
+      </div>
+    {{/user}}
     <h1 class="text-3xl font-bold">{{class.title}}</h1>
     <p class="text-stone-700 mt-2">{{class.description}}</p>
-    <p class="mt-4"><strong>Date/Time:</strong> {{class.date}} - {{class.time}}</p>
+    <p class="mt-4"><strong>Date & Time:</strong> {{class.date}} @ {{class.time}}</p>
     <p><strong>Location:</strong> {{class.location}}</p>
     <p><strong>Duration:</strong> {{class.duration}} mins</p>
     <p><strong>Price:</strong> £{{class.price}}</p>
