@@ -105,8 +105,4 @@ export const mockOrganisers = [
     username: 'admin',
     password: 'admin',
   },
-  {
-    username: 'organiser2',
-    password: 'password123',
-  },
 ];
