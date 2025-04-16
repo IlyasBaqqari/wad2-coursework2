@@ -14,6 +14,9 @@ import {
   deleteCourse,
   manageCoursePage,
   updateCourse,
+  manageClassEnrolmentsPage,
+  manageCourseEnrolmentsPage,
+  deleteEnrolment,
 } from '../controllers/organiserController.js';
 import { login, verify } from '../auth/auth.js';
 
@@ -38,5 +41,17 @@ router.post('/organiser/course/delete/:id', verify, deleteCourse);
 router.get('/organiser/class/manage/:id', verify, manageClassPage);
 router.post('/organiser/class/update/:id', verify, updateClass);
 router.post('/organiser/class/delete/:id', verify, deleteClass);
+
+router.get(
+  '/organiser/class/manage/:id/enrolments',
+  verify,
+  manageClassEnrolmentsPage
+);
+router.get(
+  '/organiser/course/manage/:id/enrolments',
+  verify,
+  manageCourseEnrolmentsPage
+);
+router.post('/organiser/enrolment/delete/:id', verify, deleteEnrolment);
 
 export default router;

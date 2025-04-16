@@ -83,20 +83,20 @@ export const mockEnrolments = [
   {
     _id: 'o1OxJQgNkVCrV9kE',
     name: 'Jamie Smith',
-    type: 'course',
-    courseId: 'ALB9Tcd3T03pDHLt',
+    type: 'class',
+    classId: 'OfAjGfAbPErN4C50',
   },
   {
     _id: '69xhXWus3Iu2BzaL',
     name: 'Samira Patel',
     type: 'class',
-    classId: 'mSdu0GLcc4SVpWQ5',
+    classId: 'OfAjGfAbPErN4C50',
   },
   {
     _id: 'Xi0cAn5SkkhOe6xt',
     name: 'Rory Chan',
-    type: 'course',
-    courseId: 'pV0b4WD5K5iatyt5',
+    type: 'class',
+    classId: 'OfAjGfAbPErN4C50',
   },
 ];
 

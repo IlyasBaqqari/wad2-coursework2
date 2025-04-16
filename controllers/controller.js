@@ -78,22 +78,38 @@ export const handleEnrolment = async (req, res) => {
     return res.status(400).send(`[400] Missing enrolment data:\n\n${req.body}`);
   }
 
-  const type = courseId ? 'course' : 'class';
+  const isCourse = Boolean(courseId);
+  const type = isCourse ? 'course' : 'class';
 
-  const header =
-    type === 'course' ? 'Enrolment Confirmed' : 'Booking Confirmed';
-  const message =
-    type === 'course'
-      ? 'You have successfully been enrolled on the course.'
-      : 'You have successfully made a booking for the class.';
+  const header = isCourse ? 'Enrolment Confirmed' : 'Booking Confirmed';
+  const message = isCourse
+    ? 'You have successfully been enrolled on the course.'
+    : 'You have successfully made a booking for the class.';
 
   try {
-    await enrolmentModel.insert({
-      name,
-      type,
-      ...(classId && { classId }),
-      ...(courseId && { courseId }),
-    });
+    if (isCourse) {
+      await enrolmentModel.insert({
+        name,
+        type,
+        courseId,
+      });
+
+      const classes = await classModel.getAllByCourseId(courseId);
+
+      for (const classItem of classes) {
+        await enrolmentModel.insert({
+          name,
+          type: 'class',
+          classId: classItem._id,
+        });
+      }
+    } else {
+      await enrolmentModel.insert({
+        name,
+        type,
+        classId,
+      });
+    }
 
     res.render('enrolmentConfirmation', {
       title: `${header} - Dance Booker`,

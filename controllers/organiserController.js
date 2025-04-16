@@ -1,4 +1,8 @@
-import { classModel, courseModel } from '../models/instances/instances.js';
+import {
+  classModel,
+  courseModel,
+  enrolmentModel,
+} from '../models/instances/instances.js';
 
 export const loginPage = (req, res) => {
   const { err } = req.query;
@@ -208,5 +212,72 @@ export const deleteCourse = async (req, res) => {
   } catch (err) {
     console.error('ERROR - organiserController > deleteCourse(): ', err);
     res.status(500).send('[500] Failed to delete course');
+  }
+};
+
+export const manageClassEnrolmentsPage = async (req, res) => {
+  const classId = req.params.id;
+  const enrolments = await enrolmentModel.getByClassId(classId);
+
+  res.render('organiser/enrolments', {
+    title: 'Manage Class Bookings - Dance Booker',
+    header: 'Manage Class Bookings',
+    backLink: `/organiser/class/manage/${classId}`,
+    enrolments,
+    isClass: true,
+  });
+};
+
+export const manageCourseEnrolmentsPage = async (req, res) => {
+  const courseId = req.params.id;
+  const enrolments = await enrolmentModel.getByCourseId(courseId);
+
+  res.render('organiser/enrolments', {
+    title: 'Manage Course Enrolments - Dance Booker',
+    header: 'Manage Course Enrolments',
+    backLink: `/organiser/course/manage/${courseId}`,
+    enrolments,
+    isCourse: true,
+  });
+};
+
+export const deleteEnrolment = async (req, res) => {
+  const enrolmentId = req.params.id;
+
+  try {
+    const enrolment = await enrolmentModel.getById(enrolmentId);
+    if (!enrolment) {
+      return res.status(404).send('[404] Enrolment not found');
+    }
+
+    await enrolmentModel.delete(enrolmentId);
+
+    if (enrolment.type === 'course' && enrolment.courseId) {
+      const relatedClasses = await classModel.getAllByCourseId(
+        enrolment.courseId
+      );
+
+      for (const classItem of relatedClasses) {
+        await enrolmentModel.deleteByUserAndClass(
+          enrolment.name,
+          classItem._id
+        );
+      }
+    }
+
+    console.log('Deleting enrolment:', enrolment);
+
+    console.log('Redirect enrolment: ', enrolment);
+
+    let redirectUrl = '/organiser/dashboard';
+    if (enrolment.type === 'course' && enrolment.courseId) {
+      redirectUrl = `/organiser/course/manage/${enrolment.courseId}/enrolments`;
+    } else if (enrolment.type === 'class' && enrolment.classId) {
+      redirectUrl = `/organiser/class/manage/${enrolment.classId}/enrolments`;
+    }
+    res.redirect(redirectUrl);
+  } catch (err) {
+    console.error('ERROR - organiserControler > deleteEnrolment(): ', err);
+    res.status(500).send('[500] Failed to delete enrolment');
   }
 };

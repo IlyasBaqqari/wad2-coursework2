@@ -1,0 +1,35 @@
+<html lang="en-gb">
+{{>components/header}}
+<body class="bg-stone-50">
+  {{>components/titleBar}}
+  <div class="container mx-auto px-4 py-8">
+    {{>components/backButton}}
+
+    <h1 class="text-3xl font-bold mb-5">{{header}}</h1>
+
+    {{#enrolments.length}}
+      <h2 class="text-lg font-medium mb-4">Total: {{enrolments.length}}</h2>
+      <ul class="space-y-2">
+        {{#enrolments}}
+          <li class="flex justify-between items-center bg-stone-200 rounded-2xl p-4 px-0 my-2 h-12">
+            <div class="flex items-center ps-4">
+              <p><b>Name:</b> {{name}}</p>
+            </div>
+            <form method="POST" action="/organiser/enrolment/delete/{{_id}}" class="m-0 pe-2">
+              <button type="submit" class="bg-red-200 hover:bg-red-300 text-red-800 font-bold py-1.5 px-3 rounded-xl">Remove</button>
+            </form>
+          </li>
+        {{/enrolments}}
+      </ul>
+    {{/enrolments.length}}
+    {{^enrolments.length}}
+      <div class="flex justify-center items-center bg-stone-100 rounded-2xl p-4 px-0 my-2 h-12">
+        <p class="text-center text-stone-400 p-0 m-0">
+          {{#isClass}}No bookings yet{{/isClass}}
+          {{#isCourse}}No enrolments yet{{/isCourse}}
+        </p>
+      </div>
+    {{/enrolments.length}}
+  </div>
+</body>
+</html>
