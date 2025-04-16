@@ -121,3 +121,9 @@ export const handleEnrolment = async (req, res) => {
     res.status(500).send('[500] Error completing enrolment');
   }
 };
+
+export const aboutPage = (req, res) => {
+  res.render('aboutPage', {
+    title: 'About - Dance Booker',
+  });
+};

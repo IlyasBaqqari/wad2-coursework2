@@ -42,6 +42,7 @@ You can use any secure, random string as the secret. Do not share this key.
 ## Features
 
 ### Public User
+- About page
 - View available classes and courses
 - Book individual classes
 - Enrol in courses (auto-enrols in linked classes)
