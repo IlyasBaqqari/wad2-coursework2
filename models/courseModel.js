@@ -47,6 +47,42 @@ class CourseModel {
       });
     });
   }
+
+  update(id, updatedData) {
+    return new Promise((resolve, reject) => {
+      this.db.update(
+        { _id: id },
+        { $set: updatedData },
+        {},
+        (err, numUpdated) => {
+          if (err) {
+            reject(err);
+            console.error('ERROR - courseModel > update(): ', err);
+          } else {
+            resolve(numUpdated);
+            console.log(
+              `courseModel > update(): ${numUpdated} entries updated`
+            );
+          }
+        }
+      );
+    });
+  }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      this.db.remove({ _id: id }, {}, (err, numRemoved) => {
+        if (err) {
+          reject(err);
+          console.error('ERROR - courseModel > delete(): ', err);
+        } else {
+          resolve(numRemoved);
+          console.log(`courseModel > delete(): ${numRemoved} entries removed`);
+        }
+      });
+    });
+  }
+  x;
 }
 
 export default CourseModel;

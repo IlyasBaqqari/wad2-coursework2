@@ -8,6 +8,12 @@ import {
   createCourse,
   createClassPage,
   createClass,
+  manageClassPage,
+  updateClass,
+  deleteClass,
+  deleteCourse,
+  manageCoursePage,
+  updateCourse,
 } from '../controllers/organiserController.js';
 import { login, verify } from '../auth/auth.js';
 
@@ -24,5 +30,13 @@ router.post('/organiser/course/new', verify, createCourse);
 
 router.get('/organiser/class/new', verify, createClassPage);
 router.post('/organiser/class/new', verify, createClass);
+
+router.get('/organiser/course/manage/:id', verify, manageCoursePage);
+router.post('/organiser/course/update/:id', verify, updateCourse);
+router.post('/organiser/course/delete/:id', verify, deleteCourse);
+
+router.get('/organiser/class/manage/:id', verify, manageClassPage);
+router.post('/organiser/class/update/:id', verify, updateClass);
+router.post('/organiser/class/delete/:id', verify, deleteClass);
 
 export default router;

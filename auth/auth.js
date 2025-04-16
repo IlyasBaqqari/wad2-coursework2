@@ -20,7 +20,7 @@ export const login = async (req, res, next) => {
     res.cookie('jwt', token);
     next();
   } catch (err) {
-    console.error('ERROR - auth > login: ', err);
+    console.error('ERROR - auth > login(): ', err);
     res.status(500).send('[500] Internal server error');
   }
 };

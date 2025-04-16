@@ -1,0 +1,43 @@
+<html lang="en-gb">
+{{>components/header}}
+<body class="bg-stone-50">
+{{>components/titleBar}}
+<div class="container mx-auto px-4 py-8">
+  {{>components/backButton}}
+
+  <h1 class="text-3xl font-bold mb-5">Manage Course</h1>
+
+  <form method="POST" action="/organiser/course/delete/{{course._id}}" class="my-8">
+    <button type="submit" class="bg-red-100 hover:bg-red-300 text-red-700 font-bold py-2 px-4 rounded">Delete Course</button>
+  </form>
+
+  <form method="POST" action="/organiser/course/update/{{course._id}}" class="space-y-4 p-6 bg-purple-100 rounded-2xl">
+    <div>
+      <label for="title" class="block mb-1.5 font-medium">Title</label>
+      <input value="{{course.title}}" id="title" type="text" name="title" required placeholder="Title..." class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="description" class="block mb-1.5 font-medium">Description</label>
+      <textarea id="description" name="description" required placeholder="Description..." rows="4" class="border p-2 px-3 w-full rounded resize-none ">{{course.description}}</textarea>
+    </div>
+    <div>
+      <label for="startDate" class="block mb-1.5 font-medium">Start Date</label>
+      <input value="{{course.startDate}}" id="startDate" type="date" name="startDate" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="endDate" class="block mb-1.5 font-medium">End Date</label>
+      <input value="{{course.endDate}}" id="endDate" type="date" name="endDate" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div>
+      <label for="price" class="block mb-1.5 font-medium">Price (£)</label>
+      <input value="{{course.price}}" id="price" type="number" name="price" step="0.01" required class="border p-2 px-3 w-full rounded">
+    </div>
+    <div class="pt-2">
+      <button type="submit" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">
+        Update Course
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -17,7 +17,7 @@ export const homePage = async (req, res) => {
       classes,
     });
   } catch (err) {
-    console.error('ERROR - controller > homePage: ', err);
+    console.error('ERROR - controller > homePage(): ', err);
     res.status(500).send('[500] Internal Server Error');
   }
 };
@@ -41,7 +41,7 @@ export const classDetails = async (req, res) => {
       },
     });
   } catch (err) {
-    console.error('ERROR - controller > classDetails: ', err);
+    console.error('ERROR - controller > classDetails(): ', err);
     res.status(500).send('[500] Error loading class');
   }
 };
@@ -66,7 +66,7 @@ export const courseDetails = async (req, res) => {
       },
     });
   } catch (err) {
-    console.error('ERROR - controller > courseDetails: ', err);
+    console.error('ERROR - controller > courseDetails(): ', err);
     res.status(500).send('[500] Error loading course');
   }
 };
@@ -101,7 +101,7 @@ export const handleEnrolment = async (req, res) => {
       message,
     });
   } catch (err) {
-    console.error('ERROR - controller > newEnrolment: ', err);
+    console.error('ERROR - controller > newEnrolment(): ', err);
     res.status(500).send('[500] Error completing enrolment');
   }
 };

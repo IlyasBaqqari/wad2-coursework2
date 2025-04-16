@@ -61,6 +61,39 @@ class ClassModel {
       });
     });
   }
+
+  update(id, updatedClass) {
+    return new Promise((resolve, reject) => {
+      this.db.update(
+        { _id: id },
+        { $set: updatedClass },
+        {},
+        (err, numUpdated) => {
+          if (err) {
+            reject(err);
+            console.error('ERROR - classModel > update(): ', err);
+          } else {
+            resolve(numUpdated);
+            console.log(`classModel > update(): ${numUpdated} entries updated`);
+          }
+        }
+      );
+    });
+  }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      this.db.remove({ _id: id }, {}, (err, numRemoved) => {
+        if (err) {
+          reject(err);
+          console.error('ERROR - classModel > delete(): ', err);
+        } else {
+          resolve(numRemoved);
+          console.log(`classModel > delete(): ${numRemoved} entries removed`);
+        }
+      });
+    });
+  }
 }
 
 export default ClassModel;
