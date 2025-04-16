@@ -265,10 +265,6 @@ export const deleteEnrolment = async (req, res) => {
       }
     }
 
-    console.log('Deleting enrolment:', enrolment);
-
-    console.log('Redirect enrolment: ', enrolment);
-
     let redirectUrl = '/organiser/dashboard';
     if (enrolment.type === 'course' && enrolment.courseId) {
       redirectUrl = `/organiser/course/manage/${enrolment.courseId}/enrolments`;
