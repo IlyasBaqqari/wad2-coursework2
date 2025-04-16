@@ -4,14 +4,16 @@
   {{>components/titleBar}}
   <div class="container mx-auto px-4 py-8">
     {{>components/backButton}}
+
+
     <h1 class="text-3xl font-bold mb-8">Organiser Dashboard</h1>
 
-    <div class="my-8">
+    <div class="my-8 pt-6">
       <a href="/organiser/manage/organisers" class="bg-blue-100 hover:bg-blue-300 text-blue-800 font-bold py-2 px-4 rounded">Manage Organisers</a>
     </div>
 
-    <div>
-      <h2 class="text-xl font-medium py-3 mt-5">Courses: {{courses.length}}</h2>
+    <div class="pt-1">
+      <h3 class="text-xl py-3 mt-2">Courses: {{courses.length}}</h3>
       <div class="my-2">
         <a href="/organiser/course/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Course</a>
       </div>
@@ -21,7 +23,7 @@
     </div>
 
     <div>
-      <h2 class="text-xl font-medium py-3">Classes: {{classes.length}}</h2>
+      <h3 class="text-xl py-3">Classes: {{classes.length}}</h3>
       <div class="my-2">
         <a href="/organiser/class/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Class</a>
       </div>
@@ -29,9 +31,8 @@
         {{>components/classList}}
       </div>
     </div>
-
-    <div class="my-8">
-      <a href="/organiser/logout" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">Sign out</a>
+    <div class="my-8 flex justify-center">
+      <a href="/organiser/logout" class="bg-purple-900 hover:bg-purple-700 text-purple-50 text-center font-bold w-32 py-2 px-4 rounded">Sign out</a>
     </div>
   </div>
 </body>
