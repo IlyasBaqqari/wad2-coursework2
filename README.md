@@ -2,6 +2,9 @@
 
 A booking system for dance classes and courses built for Coursework 2 of the Web Application Development 2 module.
 
+The live website can be accessed via this URL:
+> https://gcu-dancebooker.onrender.com
+
 ## Getting Started
 
 ### Install Dependencies
