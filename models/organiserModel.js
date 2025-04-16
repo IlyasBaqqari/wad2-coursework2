@@ -9,6 +9,20 @@ class OrganiserModel {
     console.log('Connected to organisers DB');
   }
 
+  getAll() {
+    return new Promise((resolve, reject) => {
+      this.db.find({}, (err, docs) => {
+        if (err) {
+          reject(err);
+          console.error('ERROR - organiserModel > getAll(): ', err);
+        } else {
+          resolve(docs);
+          console.log('organiserModel > getAll(): ', docs);
+        }
+      });
+    });
+  }
+
   getByUsername(username) {
     return new Promise((resolve, reject) => {
       this.db.findOne({ username }, (err, doc) => {
@@ -21,6 +35,15 @@ class OrganiserModel {
         }
       });
     });
+  }
+
+  async verifyPassword(username, plainTextPassword) {
+    const organiser = await this.getByUsername(username);
+    if (!organiser) {
+      return false;
+    }
+
+    return bcrypt.compare(plainTextPassword, organiser.password);
   }
 
   async insert(organiser) {
@@ -40,13 +63,20 @@ class OrganiserModel {
     });
   }
 
-  async verifyPassword(username, plainTextPassword) {
-    const organiser = await this.getByUsername(username);
-    if (!organiser) {
-      return false;
-    }
-
-    return bcrypt.compare(plainTextPassword, organiser.password);
+  async delete(_id) {
+    return new Promise((resolve, reject) => {
+      this.db.remove({ _id }, {}, (err, numRemoved) => {
+        if (err) {
+          reject(err);
+          console.error('ERROR - organiserModel > delete(): ', err);
+        } else {
+          resolve(numRemoved);
+          console.log(
+            `organiserModel > delete(): ${numRemoved} entries removed`
+          );
+        }
+      });
+    });
   }
 }
 

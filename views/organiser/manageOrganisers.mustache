@@ -1,0 +1,57 @@
+<html lang="en-gb">
+{{>components/header}}
+<body class="bg-stone-50">
+  {{>components/titleBar}}
+  <div class="container mx-auto px-4 py-8">
+    {{>components/backButton}}
+
+    <h1 class="text-3xl font-bold mb-5">Manage Organisers</h1>
+
+    <h2 class="text-xl font-semibold mt-6 mb-2">Add New Organiser</h2>
+    <form method="POST" action="/organiser/manage/organisers/add" class="space-y-4 p-6 bg-purple-100 rounded-2xl">
+      <div>
+        <label for="username" class="block mb-1.5 font-medium">Username</label>
+        <input id="username" type="text" name="username" required placeholder="Username..." class="border p-2 px-3 w-full rounded">
+      </div>
+      <div>
+        <label for="password" class="block mb-1.5 font-medium">Password</label>
+        <input id="password" type="password" name="password" required placeholder="Password..." class="border p-2 px-3 w-full rounded">
+      </div>
+      <div class="pt-2">
+        <button type="submit" class="bg-purple-900 hover:bg-purple-700 text-purple-50 font-bold py-2 px-4 rounded">
+          Add Organiser
+        </button>
+      </div>
+    </form>
+
+    {{#organisers.length}}
+
+      <h2 class="text-xl font-semibold mt-6 mb-2">Existing Organisers</h2>
+      <ul class="space-y-2">
+        {{#organisers}}
+          <li class="flex justify-between items-center bg-stone-200 rounded-2xl p-4 px-0 my-2 h-12">
+            <div class="flex items-center ps-4">
+              <p><b>Username:</b> {{username}}</p>
+            </div>
+            {{#isCurrentUser}}
+              <p type="submit" class="text-stone-500 font-bold py-1.5 px-8 rounded-xl">You</p>
+            {{/isCurrentUser}}
+            {{^isCurrentUser}}
+              <form method="POST" action="/organiser/manage/organisers/delete/{{_id}}" onsubmit="return confirm('Are you sure you want to delete this organiser?')" class="m-0 pe-2">
+                <button type="submit" class="bg-red-200 hover:bg-red-300 text-red-800 font-bold py-1.5 px-3 rounded-xl">Delete</button>
+              </form>
+            {{/isCurrentUser}}
+          </li>
+        {{/organisers}}
+      </ul>
+    {{/organisers.length}}
+    {{^organisers.length}}
+      <div class="flex justify-center items-center bg-stone-100 rounded-2xl p-4 px-0 my-2 h-12">
+        <p class="text-center text-stone-400 p-0 m-0">
+          No organisers found
+        </p>
+      </div>
+    {{/organisers.length}}
+  </div>
+</body>
+</html>

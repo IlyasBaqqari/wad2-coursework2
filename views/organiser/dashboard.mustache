@@ -6,23 +6,27 @@
     {{>components/backButton}}
     <h1 class="text-2xl font-bold mb-8">Organiser Dashboard</h1>
 
-    <div>
-      <h2 class="text-xl font-medium py-3">Classes</h2>
-      <div class="my-2">
-        <a href="/organiser/class/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Class</a>
-      </div>
-      <div style="margin: -6px -16px 4px">
-        {{>components/classList}}
-      </div>
+    <div class="my-8">
+      <a href="/organiser/manage/organisers" class="bg-blue-100 hover:bg-blue-300 text-blue-800 font-bold py-2 px-4 rounded">Manage Organisers</a>
     </div>
 
     <div>
-      <h2 class="text-xl font-medium py-3 mt-5">Courses</h2>
+      <h2 class="text-xl font-medium py-3 mt-5">Courses: {{courses.length}}</h2>
       <div class="my-2">
         <a href="/organiser/course/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Course</a>
       </div>
       <div style="margin: -6px -16px 4px">
         {{>components/courseList}}
+      </div>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-medium py-3">Classes: {{classes.length}}</h2>
+      <div class="my-2">
+        <a href="/organiser/class/new" class="bg-green-100 hover:bg-green-300 text-green-700 font-bold py-2 px-4 rounded">Create Class</a>
+      </div>
+      <div style="margin: -6px -16px 4px">
+        {{>components/classList}}
       </div>
     </div>
 

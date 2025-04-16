@@ -17,6 +17,9 @@ import {
   manageClassEnrolmentsPage,
   manageCourseEnrolmentsPage,
   deleteEnrolment,
+  manageOrganisersPage,
+  createOrganiser,
+  deleteOrganiser,
 } from '../controllers/organiserController.js';
 import { login, verify } from '../auth/auth.js';
 
@@ -53,5 +56,9 @@ router.get(
   manageCourseEnrolmentsPage
 );
 router.post('/organiser/enrolment/delete/:id', verify, deleteEnrolment);
+
+router.get('/organiser/manage/organisers', verify, manageOrganisersPage);
+router.post('/organiser/manage/organisers/add', verify, createOrganiser);
+router.post('/organiser/manage/organisers/delete/:id', verify, deleteOrganiser);
 
 export default router;

@@ -2,6 +2,7 @@ import {
   classModel,
   courseModel,
   enrolmentModel,
+  organiserModel,
 } from '../models/instances/instances.js';
 
 export const loginPage = (req, res) => {
@@ -275,5 +276,48 @@ export const deleteEnrolment = async (req, res) => {
   } catch (err) {
     console.error('ERROR - organiserControler > deleteEnrolment(): ', err);
     res.status(500).send('[500] Failed to delete enrolment');
+  }
+};
+
+export const manageOrganisersPage = async (req, res) => {
+  const currentUsername = res.locals.user;
+
+  const organisers = (await organiserModel.getAll()).map((organiser) => ({
+    ...organiser,
+    isCurrentUser: organiser.username === currentUsername,
+  }));
+
+  res.render('organiser/manageOrganisers', {
+    title: 'Manage Organisers - Dance Booker',
+    backLink: '/organiser/dashboard',
+    organisers,
+  });
+};
+
+export const createOrganiser = async (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).send('[400] Username and password required');
+  }
+
+  try {
+    await organiserModel.insert({ username, password });
+    res.redirect('/organiser/manage/organisers');
+  } catch (err) {
+    console.error('ERROR - createOrganiser(): ', err);
+    res.status(500).send('[500] Failed to add organiser');
+  }
+};
+
+export const deleteOrganiser = async (req, res) => {
+  const organiserId = req.params.id;
+
+  try {
+    await organiserModel.delete(organiserId);
+    res.redirect('/organiser/manage/organisers');
+  } catch (err) {
+    console.error('ERROR - deleteOrganiser(): ', err);
+    res.status(500).send('[500] Failed to delete organiser');
   }
 };
